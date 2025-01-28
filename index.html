@@ -429,7 +429,7 @@
           }
 
           let size = 2;
-          let baseSize = canvas.width / 10; // Ukuran dasar hati berdasarkan ukuran kanvas
+          let baseSize = canvas.width / 10;
           let opacity = 1;
           let moveY = canvas.height / 2;
           let moveX = canvas.width / 2;
@@ -488,13 +488,12 @@
             animateHeart();
           }
 
-          // Ensure canvas adjusts on window resize
           window.addEventListener("resize", () => {
             setupCanvas();
-            baseSize = canvas.width / 10; // Perbarui ukuran dasar hati
-            size = baseSize; // Reset ukuran hati
-            opacity = 1; // Reset opacity
-            progress = 0; // Reset progress
+            baseSize = canvas.width / 10;
+            size = baseSize;
+            opacity = 1;
+            progress = 0;
             initializeAnimation();
           });
 
