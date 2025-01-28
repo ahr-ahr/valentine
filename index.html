@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, My Valentine!</title>
+    <link rel="icon" type="icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      h1 {
+        font-size: 3em;
+        font-weight: bold;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      p {
+        font-size: 1.5em;
+        margin-top: 10px;
+        animation: fadeIn 3s ease-in-out;
+      }
+
+      .heart {
+        position: fixed;
+        color: #ff0033;
+        font-size: 3em;
+        animation: fall 4s linear infinite;
+        will-change: transform, opacity;
+        z-index: 10;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+          transform: scale(1.2);
+        }
+      }
+
+      button {
+        background-color: white;
+        color: #ff758c;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2em;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        animation: fadeIn 2.5s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #ff0033;
+        color: white;
+      }
+
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: 2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .close-btn:hover {
+        color: #ff0033;
+      }
+
+      .gift-box {
+        width: 150px;
+        height: 150px;
+        background: #ff0033;
+        border-radius: 20px;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s ease;
+      }
+
+      .gift-box::before {
+        content: "🎁";
+        font-size: 5em;
+        position: absolute;
+      }
+
+      .gift-message {
+        display: none;
+        font-size: 2em;
+        color: white;
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .toy {
+        display: none;
+        font-size: 3em;
+        color: #ff0033;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      #loveCanvas {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        h1 {
+          font-size: 2.5em;
+        }
+
+        p {
+          font-size: 1.2em;
+        }
+
+        button {
+          padding: 12px 25px;
+          font-size: 1em;
+        }
+
+        .gift-box {
+          width: 120px;
+          height: 120px;
+        }
+
+        .gift-box::before {
+          font-size: 4em;
+        }
+
+        .gift-message {
+          font-size: 1.5em;
+        }
+
+        .toy {
+          font-size: 2.5em;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+
+        button {
+          padding: 10px 20px;
+          font-size: 0.9em;
+        }
+
+        .gift-box {
+          width: 100px;
+          height: 100px;
+        }
+
+        .gift-box::before {
+          font-size: 3.5em;
+        }
+
+        .gift-message {
+          font-size: 1.2em;
+        }
+
+        .toy {
+          font-size: 2em;
+        }
+      }
+
+      @media screen and (min-width: 1200px) {
+        h1 {
+          font-size: 3.5em;
+        }
+
+        p {
+          font-size: 1.8em;
+        }
+
+        button {
+          padding: 18px 35px;
+          font-size: 1.3em;
+        }
+
+        .gift-box {
+          width: 180px;
+          height: 180px;
+        }
+
+        .gift-box::before {
+          font-size: 6em;
+        }
+
+        .gift-message {
+          font-size: 2.5em;
+        }
+
+        .toy {
+          font-size: 4em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Happy Birthday, My Valentine! 🎉</h1>
+      <p>May your day be filled with happiness and love! ❤️</p>
+      <button onclick="showSurprise()">Click for a surprise!</button>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="gift-box" id="gift-box" onclick="openGift()"></div>
+      <div class="gift-message" id="gift-message">
+        You are my everything! 💖
+      </div>
+      <div id="toy" class="toy">🧸</div>
+
+      <button id="close-modal" class="close-btn" onclick="closeModal()">
+        X
+      </button>
+    </div>
+
+    <audio id="bg-music" autoplay loop>
+      <source src="perfect-ed-sheeran.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <canvas id="loveCanvas" width="400" height="400"></canvas>
+
+    <script>
+      let sadInterval;
+      let heartCount = 20;
+      let heartInterval;
+      let musicPlayed = false;
+
+      function showSurprise() {
+        clearInterval(sadInterval);
+        document.getElementById("modal").style.display = "flex";
+        setTimeout(() => {
+          startHeartRain();
+
+          if (!musicPlayed) {
+            const music = document.getElementById("bg-music");
+            music.volume = 0.5;
+
+            music
+              .play()
+              .then(() => {
+                musicPlayed = true;
+              })
+              .catch(() => {
+                console.log("Autoplay prevented. User interaction required.");
+              });
+          }
+        }, 500);
+      }
+
+      timer = setTimeout(() => {
+        showSadEmoji();
+      }, 3000);
+
+      function showSadEmoji() {
+        const sadModal = document.createElement("div");
+        sadModal.style.position = "fixed";
+        sadModal.style.top = "50%";
+        sadModal.style.left = "50%";
+        sadModal.style.transform = "translate(-50%, -50%)";
+        sadModal.style.color = "white";
+        sadModal.style.background = "rgba(0, 0, 0, 0.7)";
+        sadModal.style.padding = "20px";
+        sadModal.style.borderRadius = "10px";
+        sadModal.innerHTML = "😞 Why didn't you click the button?";
+
+        const width = window.innerWidth;
+
+        if (width <= 480) {
+          sadModal.style.fontSize = "1.5em";
+          sadModal.style.padding = "10px";
+        } else if (width <= 768) {
+          sadModal.style.fontSize = "2em";
+          sadModal.style.padding = "15px";
+        } else if (width >= 1200) {
+          sadModal.style.fontSize = "3.5em";
+          sadModal.style.padding = "25px";
+        } else {
+          sadModal.style.fontSize = "3em";
+          sadModal.style.padding = "20px";
+        }
+
+        document.body.appendChild(sadModal);
+
+        setTimeout(() => {
+          sadModal.remove();
+        }, 3000);
+      }
+
+      function startSadEmoji() {
+        sadInterval = setInterval(showSadEmoji, 3000);
+      }
+
+      startSadEmoji();
+
+      function startHeartRain() {
+        heartInterval = setInterval(() => {
+          createHeart();
+        }, 300);
+
+        setTimeout(() => clearInterval(heartInterval), 4000);
+      }
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "❤️";
+        document.body.appendChild(heart);
+
+        const leftPosition = Math.random() * 100 + "vw";
+        const topPosition = Math.random() * 50 + "vh";
+        const animationDuration = Math.random() * 2 + 3 + "s";
+
+        heart.style.left = leftPosition;
+        heart.style.top = topPosition;
+        heart.style.animationDuration = animationDuration;
+
+        setTimeout(() => {
+          heart.remove();
+        }, parseFloat(animationDuration) * 1500);
+      }
+
+      function openGift() {
+        const giftBox = document.getElementById("gift-box");
+        const giftMessage = document.getElementById("gift-message");
+        const toy = document.getElementById("toy");
+
+        giftBox.style.display = "none";
+
+        setTimeout(() => {
+          startHeartRain();
+
+          toy.style.display = "block";
+          giftMessage.style.display = "block";
+
+          const canvas = document.getElementById("loveCanvas");
+          const ctx = canvas.getContext("2d");
+
+          function setupCanvas() {
+            const width = window.innerWidth;
+
+            if (width <= 480) {
+              canvas.width = 220;
+              canvas.height = 250;
+            } else if (width <= 768) {
+              canvas.width = 400;
+              canvas.height = 400;
+            } else if (width >= 1200) {
+              canvas.width = 600;
+              canvas.height = 600;
+            } else {
+              canvas.width = 500;
+              canvas.height = 500;
+            }
+
+            canvas.style.display = "block";
+          }
+
+          let size = 2;
+          let baseSize = canvas.width / 10; // Ukuran dasar hati berdasarkan ukuran kanvas
+          let opacity = 1;
+          let moveY = canvas.height / 2;
+          let moveX = canvas.width / 2;
+          let progress = 0;
+
+          function drawHeart(x, y, size, progress) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+
+            ctx.bezierCurveTo(
+              x - size / 2,
+              y - size / 2,
+              x - size,
+              y + size / 2,
+              x,
+              y + size * progress
+            );
+
+            ctx.bezierCurveTo(
+              x + size,
+              y + size / 2,
+              x + size / 2,
+              y - size / 2,
+              x,
+              y
+            );
+
+            ctx.closePath();
+            ctx.fillStyle = `rgba(255, 0, 51, ${opacity})`;
+            ctx.fill();
+          }
+
+          function animateHeart() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawHeart(moveX, moveY, size, progress);
+
+            size += baseSize * 0.002;
+            opacity -= 0.0003;
+            progress += 0.001;
+
+            if (opacity <= 0) {
+              canvas.style.display = "none";
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(animateHeart);
+            }
+          }
+
+          function initializeAnimation() {
+            setupCanvas();
+            moveX = canvas.width / 2;
+            moveY = canvas.height / 2;
+            size = baseSize;
+            animateHeart();
+          }
+
+          // Ensure canvas adjusts on window resize
+          window.addEventListener("resize", () => {
+            setupCanvas();
+            baseSize = canvas.width / 10; // Perbarui ukuran dasar hati
+            size = baseSize; // Reset ukuran hati
+            opacity = 1; // Reset opacity
+            progress = 0; // Reset progress
+            initializeAnimation();
+          });
+
+          initializeAnimation();
+        }, 500);
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        const giftBox = document.getElementById("gift-box");
+        const giftMessage = document.getElementById("gift-message");
+        const toy = document.getElementById("toy");
+        const music = document.getElementById("bg-music");
+        const hearts = document.querySelectorAll(".heart");
+        const canvas = document.getElementById("loveCanvas");
+
+        clearInterval(heartInterval);
+
+        hearts.forEach((heart) => heart.remove());
+
+        heartCount = 0;
+
+        toy.style.display = "none";
+        giftMessage.style.display = "none";
+
+        giftBox.style.display = "flex";
+
+        canvas.style.display = "none";
+
+        modal.style.animation = "fadeOut 1s forwards";
+
+        music.pause();
+        music.currentTime = 0;
+
+        setTimeout(() => {
+          modal.style.display = "none";
+          modal.style.animation = "";
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
